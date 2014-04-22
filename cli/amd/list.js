@@ -56,6 +56,11 @@ cli.main = function (args, opts) {
         }
     });
 
+    // 当没有指明文件时，直接将当前目录下的所有文件作为输入
+    if (!files.length) {
+        files.push('.');
+    }
+
     var file = require('../../lib/file');
     var configFile = opts.module_conf || './module.conf';
     file.listModule(files, configFile)
