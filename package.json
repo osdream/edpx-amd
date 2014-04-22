@@ -1,0 +1,26 @@
+{
+  "name": "edpx-amd",
+  "version": "0.0.1",
+  "description": "edp user command amd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ecomfe/edpx-seed.git"
+  },
+  "keywords": [
+    "edp"
+  ],
+  "dependencies": {
+      "edp-core": ">=1.0.12",
+      "edp-config": ">=0.4.2"
+  },
+  "author": "leeight@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ecomfe/edpx-seed/issues"
+  },
+  "homepage": "https://github.com/ecomfe/edpx-seed"
+}
