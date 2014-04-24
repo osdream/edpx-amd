@@ -1,6 +1,6 @@
 {
   "name": "edpx-amd",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "edp user command amd",
   "main": "index.js",
   "scripts": {
@@ -8,19 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ecomfe/edpx-seed.git"
+    "url": "git://github.com/osdream/edpx-amd.git"
   },
   "keywords": [
-    "edp"
+    "edp", "amd"
   ],
   "dependencies": {
-      "edp-core": ">=1.0.12",
-      "edp-config": ">=0.4.2"
+      "edp-core": ">=1.0.12"
   },
-  "author": "leeight@gmail.com",
+  "author": "osdream.song@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ecomfe/edpx-seed/issues"
+    "url": "https://github.com/osdream/edpx-amd/issues"
   },
-  "homepage": "https://github.com/ecomfe/edpx-seed"
+  "homepage": "https://github.com/osdream/edpx-amd"
 }

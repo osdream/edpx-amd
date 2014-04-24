@@ -70,7 +70,7 @@ cli.main = function (args, opts) {
                 item.modules.forEach(function(module) {
                     if (module.id) {
                         var id = module.id;
-                        if (module.aliasIds) {
+                        if (module.aliasIds && module.aliasIds.length) {
                             id = id + ', ' + module.aliasIds.join(', ');
                         }
                         console.log(id);
