@@ -25,7 +25,7 @@ var cli = {};
  *
  * @type {string}
  */
-cli.description = '找到指定 AMD 模块所处的文件';
+cli.description = '将指定模块的依赖关系可视化，生成一个html展示依赖关系';
 
 /**
  * 命令选项信息

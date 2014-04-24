@@ -25,7 +25,7 @@ var cli = {};
  *
  * @type {string}
  */
-cli.description = '找到指定 AMD 模块所处的文件';
+cli.description = '分析指定模块的依赖关系，并输出JSON对象';
 
 /**
  * 命令选项信息
