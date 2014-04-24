@@ -69,7 +69,11 @@ cli.main = function (args, opts) {
                 console.log('[' + edp.chalk.green(item.file) + '] has modules: ');
                 item.modules.forEach(function(module) {
                     if (module.id) {
-                        console.log(module.id);
+                        var id = module.id;
+                        if (module.aliasIds) {
+                            id = id + ', ' + module.aliasIds.join(', ');
+                        }
+                        console.log(id);
                     }
                     else {
                         console.log('an anonymous module found');
