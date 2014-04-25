@@ -1,6 +1,6 @@
 {
   "name": "edpx-amd",
-  "version": "0.0.5-beta",
+  "version": "0.0.6",
   "description": "edp user command amd",
   "main": "index.js",
   "scripts": {
