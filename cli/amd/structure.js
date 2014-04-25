@@ -46,11 +46,12 @@ var path = require('path');
  */
 cli.main = function (args, opts) {
     var logger = edp.log;
-    var modules = args;
+    var file = require('../../lib/file');
+    var calc = require('../../lib/calc');
 
-    var calcdeps = require('../../lib/calcdeps');
     var configFile = opts.module_conf || './module.conf';
-    var results = calcdeps.calcModuleDeps(modules, configFile)
+    var modules = file.parseModuleIds(args, configFile);
+    var results = calc.calcModuleDeps(modules, configFile)
     console.log(JSON.stringify(results, null, 4));
 };
 

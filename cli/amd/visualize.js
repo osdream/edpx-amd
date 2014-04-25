@@ -25,14 +25,14 @@ var cli = {};
  *
  * @type {string}
  */
-cli.description = '将指定模块的依赖关系可视化，生成一个html展示依赖关系';
+cli.description = '将指定模块的依赖关系可视化';
 
 /**
  * 命令选项信息
  *
  * @type {Array}
  */
-cli.options = ['module_conf:', 'output:'];
+cli.options = ['module_conf:', 'format:', 'output:'];
 
 var fs = require('fs');
 var edp = require('edp-core');
@@ -46,17 +46,28 @@ var path = require('path');
  */
 cli.main = function (args, opts) {
     var logger = edp.log;
-    var modules = args;
+    var format = opts.format || 'console';
+    var file = require('../../lib/file');
+    var calc = require('../../lib/calc');
 
-    var calcdeps = require('../../lib/calcdeps');
     var configFile = opts.module_conf || './module.conf';
-    var structure = calcdeps.calcModuleDeps(modules, configFile)
-    var tpl = fs.readFileSync(path.resolve(__dirname, '../../lib/tpl/visualize.tpl'), 'utf-8');
+    var modules = file.parseModuleIds(args, configFile);
+    var structure = calc.calcModuleDeps(modules, configFile)
 
-    fs.writeFileSync(
-        opts.output || './deps.html',
-        tpl.replace(/\$\{structure\}/, JSON.stringify(structure))
-    );
+    if (format == 'console') {
+        modules.forEach(function(module) {
+            console.log(calc.visualize(structure, module));
+            console.log();
+        });
+    }
+    else {
+        var tpl = fs.readFileSync(path.resolve(__dirname, '../../lib/tpl/report.tpl'), 'utf-8');
+
+        fs.writeFileSync(
+            opts.output || './report.html',
+            tpl.replace(/\$\{structure\}/, JSON.stringify(structure))
+        );
+    }
 };
 
 /**
