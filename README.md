@@ -115,7 +115,7 @@ edp amd visualize <module> [--module_conf=moduleConfFile]
 **Usage**
 
 ```
-edp amd relatify [--module_conf=moduleConfFile] [--resolve_all] [--output_type=&lt;type&gt;] &lt;file|dir&gt; [, &lt;file|dir&gt;]
+edp amd relatify [--module_conf=moduleConfFile] [--resolve_all] [--output_type=<type>] <file|dir> [, <file|dir>]
 ```
 
 **Options**
