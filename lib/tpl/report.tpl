@@ -18,6 +18,11 @@
     position: relative;
   }
 
+  .graph svg {
+    width: 100%;
+    height: 100%;
+  }
+
   g.dimmed  {
     stroke-opacity: 0.05;
   }

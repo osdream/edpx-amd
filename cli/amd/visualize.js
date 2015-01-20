@@ -63,10 +63,41 @@ cli.main = function (args, opts) {
     else {
         var tpl = fs.readFileSync(path.resolve(__dirname, '../../lib/tpl/report.tpl'), 'utf-8');
 
+        console.log('The dependency is visualized in file [ ' + edp.chalk.green('report.html') + ' ], please view it in browser.');
         fs.writeFileSync(
             opts.output || './report.html',
             tpl.replace(/\$\{structure\}/, JSON.stringify(structure))
         );
+
+        // start a static server
+        var connect = require('connect');
+        var exec = require('child_process').exec;
+
+        var openURL = function (url) {
+            switch (process.platform) {
+                case "darwin":
+                    exec('open ' + url);
+                    break;
+                case "win32":
+                    exec('start ' + url);
+                    break;
+            }
+        };
+
+        var app = connect();
+        app.use(function (req, res, next) {
+            res.setHeader("Access-Control-Allow-Origin", "*");
+            next();
+        });
+        app.use(connect.static('./'));
+        app.use(connect.directory('./'));
+        var port = 8200;
+        app.listen(port, function () {
+            var url = "http://localhost:" + port;
+            console.log("Running static server at " + url);
+            console.log('You can open ' + edp.chalk.green('http://localhost/8200/report.html') + ' to see the result.');
+            openURL(url);
+        });
     }
 };
 
