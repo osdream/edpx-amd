@@ -2,7 +2,7 @@
   "name": "edpx-amd",
   "version": "0.0.8",
   "description": "edp user command amd",
-  "main": "index.js",
+  "main": "cli/amd.js",
   "scripts": {
     "test": "make -C test"
   },

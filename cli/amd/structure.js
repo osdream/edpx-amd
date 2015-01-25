@@ -1,18 +1,16 @@
 /***************************************************************************
- * 
+ *
  * Copyright (c) 2014 Baidu.com, Inc. All Rights Reserved
  * $Id$
- * 
+ *
+ * @file:    structure.js
+ * @author:  songao(songao@baidu.com)
+ * @version: $Revision$
+ * @date:    $Date: 2014/04/21 17:03:41$
+ * @desc:    分析模块依赖，生成依赖描述 JSON
+ *
  **************************************************************************/
- 
- 
-/*
- * path:    structure.js
- * desc:    
- * author:  songao(songao@baidu.com)
- * version: $Revision$
- * date:    $Date: 2014/04/21 17:03:41$
- */
+
 
 /**
  * @inner
@@ -40,18 +38,17 @@ var path = require('path');
 
 /**
  * 模块命令行运行入口
- * 
+ *
  * @param {Array} args 命令运行参数
  * @param {Object} opts 命令选项
  */
 cli.main = function (args, opts) {
-    var logger = edp.log;
     var file = require('../../lib/file');
     var calc = require('../../lib/calc');
 
     var configFile = opts.module_conf || './module.conf';
     var modules = file.parseModuleIds(args, configFile);
-    var results = calc.calcModuleDeps(modules, configFile)
+    var results = calc.calcModuleDeps(modules, configFile);
     console.log(JSON.stringify(results, null, 4));
 };
 

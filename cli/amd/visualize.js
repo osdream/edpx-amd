@@ -1,18 +1,16 @@
 /***************************************************************************
- * 
+ *
  * Copyright (c) 2014 Baidu.com, Inc. All Rights Reserved
  * $Id$
- * 
+ *
+ * @file:    visualize.js
+ * @author:  songao(songao@baidu.com)
+ * @version: $Revision$
+ * @date:    $Date: 2014/04/21 17:03:40$
+ * @desc:    模块依赖可视化
+ *
  **************************************************************************/
- 
- 
-/*
- * path:    visualize.js
- * desc:    
- * author:  songao(songao@baidu.com)
- * version: $Revision$
- * date:    $Date: 2014/04/21 17:03:40$
- */
+
 
 /**
  * @inner
@@ -40,22 +38,21 @@ var path = require('path');
 
 /**
  * 模块命令行运行入口
- * 
+ *
  * @param {Array} args 命令运行参数
  * @param {Object} opts 命令选项
  */
 cli.main = function (args, opts) {
-    var logger = edp.log;
     var format = opts.format || 'console';
     var file = require('../../lib/file');
     var calc = require('../../lib/calc');
 
     var configFile = opts.module_conf || './module.conf';
     var modules = file.parseModuleIds(args, configFile);
-    var structure = calc.calcModuleDeps(modules, configFile)
+    var structure = calc.calcModuleDeps(modules, configFile);
 
-    if (format == 'console') {
-        modules.forEach(function(module) {
+    if (format === 'console') {
+        modules.forEach(function (module) {
             console.log(calc.visualize(structure, module));
             console.log();
         });
@@ -63,7 +60,10 @@ cli.main = function (args, opts) {
     else {
         var tpl = fs.readFileSync(path.resolve(__dirname, '../../lib/tpl/report.tpl'), 'utf-8');
 
-        console.log('The dependency is visualized in file [ ' + edp.chalk.green('report.html') + ' ], please view it in browser.');
+        console.log('The dependency is visualized in file [ '
+            + edp.chalk.green('report.html')
+            + ' ], please view it in browser.'
+        );
         fs.writeFileSync(
             opts.output || './report.html',
             tpl.replace(/\$\{structure\}/, JSON.stringify(structure))
@@ -75,10 +75,10 @@ cli.main = function (args, opts) {
 
         var openURL = function (url) {
             switch (process.platform) {
-                case "darwin":
+                case 'darwin':
                     exec('open ' + url);
                     break;
-                case "win32":
+                case 'win32':
                     exec('start ' + url);
                     break;
             }
@@ -86,16 +86,19 @@ cli.main = function (args, opts) {
 
         var app = connect();
         app.use(function (req, res, next) {
-            res.setHeader("Access-Control-Allow-Origin", "*");
+            res.setHeader('Access-Control-Allow-Origin', '*');
             next();
         });
         app.use(connect.static('./'));
         app.use(connect.directory('./'));
         var port = 8200;
         app.listen(port, function () {
-            var url = "http://localhost:" + port;
-            console.log("Running static server at " + url);
-            console.log('You can open ' + edp.chalk.green('http://localhost/8200/report.html') + ' to see the result.');
+            var url = 'http://localhost:' + port;
+            console.log('Running static server at ' + url);
+            console.log('You can open '
+                + edp.chalk.green('http://localhost/8200/report.html')
+                + ' to see the result.'
+            );
             openURL(url);
         });
     }

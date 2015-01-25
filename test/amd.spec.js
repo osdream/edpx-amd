@@ -1,29 +1,27 @@
 /***************************************************************************
- * 
+ *
  * Copyright (c) 2014 Baidu.com, Inc. All Rights Reserved
  * $Id$
- * 
+ *
+ * @file:    amd.spec.js
+ * @author:  songao(songao@baidu.com)
+ * @version: $Revision$
+ * @date:    $Date: 2014/08/01 12:12:37$
+ * @desc:    测试 edp amd
+ *
  **************************************************************************/
- 
- 
-/*
- * path:    amd.spec.js
- * desc:    
- * author:  songao(songao@baidu.com)
- * version: $Revision$
- * date:    $Date: 2014/08/01 12:12:37$
- */
+
 
 var fs = require('fs');
 var path = require('path');
 var file = require('../lib/file');
 
-describe('file', function() {
+describe('file', function () {
     function getFilePath(filePath) {
         return path.join(__dirname, 'data/dummy-project', filePath);
     }
 
-    it('relatify', function() {
+    it('relatify', function () {
         var configFile = getFilePath('module.conf');
 
         // 不同形式的define

@@ -1,18 +1,16 @@
 /***************************************************************************
- * 
+ *
  * Copyright (c) 2014 Baidu.com, Inc. All Rights Reserved
  * $Id$
- * 
+ *
+ * @file:    cli/amd/relatify.js
+ * @author:  songao(songao@baidu.com)
+ * @version: $Revision$
+ * @date:    $Date: 2014/07/31 12:31:27$
+ * @desc:    对指定的文件里的模块 ID 转化为相对 ID
+ *
  **************************************************************************/
- 
- 
-/*
- * path:    cli/amd/relatify.js
- * desc:    
- * author:  songao(songao@baidu.com)
- * version: $Revision$
- * date:    $Date: 2014/07/31 12:31:27$
- */
+
 
 /**
  * @inner
@@ -41,12 +39,11 @@ var util = edp.util;
 
 /**
  * 模块命令行运行入口
- * 
+ *
  * @param {Array} args 命令运行参数
  * @param {Object} opts 命令选项
  */
 cli.main = function (args, opts) {
-    var logger = edp.log;
     var files = args;
     var file = require('../../lib/file');
     var configFile = opts.module_conf || './module.conf';
@@ -62,10 +59,10 @@ cli.main = function (args, opts) {
         });
     }
     if (files.length) {
-        files.forEach(function(subFile) {
+        files.forEach(function (subFile) {
             var stat = fs.statSync(subFile);
             if (stat.isDirectory()) {
-                util.scanDir(subFile, function(sFile) {
+                util.scanDir(subFile, function (sFile) {
                     if (!/\.js$/.test(sFile)) {
                         return;
                     }

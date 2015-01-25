@@ -1,23 +1,28 @@
 /***************************************************************************
- * 
+ *
  * Copyright (c) 2014 Baidu.com, Inc. All Rights Reserved
  * $Id$
- * 
+ *
+ * @file:    test/data/dummy-project/src/dep.js
+ * @author:  songao(songao@baidu.com)
+ * @version: $Revision$
+ * @date:    $Date: 2014/08/01 16:18:10$
+ * @desc:    file with dep
+ *
  **************************************************************************/
- 
- 
-/*
- * path:    test/data/dummy-project/src/dep.js
- * desc:    
- * author:  songao(songao@baidu.com)
- * version: $Revision$
- * date:    $Date: 2014/08/01 16:18:10$
- */
 
-define('dep', ['er/Action', 'er/tpl!dirA/list.html'], function() {
-    require('er/Action');
-    require('er/tpl!./dirA/form.html');
-});
+
+define(
+    'dep',
+    [
+        'er/Action',
+        'er/tpl!dirA/list.html'
+    ],
+    function () {
+        require('er/Action');
+        require('er/tpl!./dirA/form.html');
+    }
+);
 
 
 

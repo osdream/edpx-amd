@@ -1,18 +1,16 @@
 /***************************************************************************
- * 
+ *
  * Copyright (c) 2014 Baidu.com, Inc. All Rights Reserved
  * $Id$
- * 
+ *
+ * @file:    find.js
+ * @author:  songao(songao@baidu.com)
+ * @version: $Revision$
+ * @date:    $Date: 2014/04/21 17:03:23$
+ * @desc:    列出JS文件里包含的 `AMD` 模块
+ *
  **************************************************************************/
- 
- 
-/*
- * path:    find.js
- * desc:    列出JS文件里包含的 `AMD` 模块
- * author:  songao(songao@baidu.com)
- * version: $Revision$
- * date:    $Date: 2014/04/21 17:03:23$
- */
+
 
 /**
  * @inner
@@ -40,20 +38,19 @@ var path = require('path');
 
 /**
  * 模块命令行运行入口
- * 
+ *
  * @param {Array} args 命令运行参数
  * @param {Object} opts 命令选项
  */
 cli.main = function (args, opts) {
-    var logger = edp.log;
     var modules = args;
 
     var file = require('../../lib/file');
     var configFile = opts.module_conf || './module.conf';
-    var results = file.findModule(modules, opts.dir, configFile)
-    results.forEach(function(item) {
+    var results = file.findModule(modules, opts.dir, configFile);
+    results.forEach(function (item) {
         console.log('[' + edp.chalk.green(item.module) + '] exists in the following files: ');
-        item.files.forEach(function(file) {
+        item.files.forEach(function (file) {
             var relativePath = path.relative('.', file);
             console.log(relativePath);
         });
